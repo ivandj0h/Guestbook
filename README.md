@@ -11,7 +11,3 @@ XML PHP Extension
 Ctype PHP Extension
 JSON PHP Extension
 
-###Install & Run
-Import database.sql.txt
-Configure database connection in db_config.php
-Save your password hash in config.php (alg. SHA-256)
