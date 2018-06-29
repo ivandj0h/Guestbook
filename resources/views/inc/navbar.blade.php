@@ -6,9 +6,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
+          @if (Auth::guest())
             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          @else
+            <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li> 
+          @endif   
             <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
           </ul>
 
           <ul class="nav navbar-nav ml-auto">
