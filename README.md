@@ -1,19 +1,25 @@
-GuestBook
-This is a Simple Guest book using laravel 5.x
+# GUESTBOOK - This is a Simple Guest book using Laravel 5.x From Scratch App
 
-Requirements
-PHP >= 7.1.3
-OpenSSL PHP Extension
-PDO PHP Extension
-Mbstring PHP Extension
-Tokenizer PHP Extension
-XML PHP Extension
-Ctype PHP Extension
+This is the source code for the "Simple Guest book using Laravel 5.x" by Ivandi. It is a website was created also includes full authentication and CRUD.
+
+## Version
+1.0.0
+
+## Requirements
+PHP >= 7.1.3, 
+OpenSSL PHP Extension, 
+PDO PHP Extension, 
+Mbstring PHP Extension, 
+Tokenizer PHP Extension, 
+XML PHP Extension, 
+Ctype PHP Extension, 
 JSON PHP Extension
-IIS/Apache/Nginx
-MySQL/MariaDB
 
-Install & Run
-Import database.sql.txt
-Configure database connection in db_config.php
-Save your password hash in config.php (alg. SHA-256)
+## Installing Laravel
+composer global require "laravel/installer"
+
+## Local Development Server
+php artisan serve
+
+## Database
+The sql dump is in _SQL/guestbook.sql
