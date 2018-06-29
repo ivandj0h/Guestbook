@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- <div class="jumbotron text-center"> --}}
-        <h1>GuestBook List</h1>
+        <h3>GuestBook List</h3>
         <a href="/posts/create" class="btn btn-primary">Add New Guest</a>
         <br /><br />
         @if(@count($posts) > 0)
@@ -12,7 +12,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Content</th>
-                <th scope="col"></th>
+                <th width="14%">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -21,16 +21,14 @@
                 <th scope="row">{{$post->name}}</th>
                 <td>{{$post->email}}</td>
                 <td>{{$post->content}}</td>
-                <td><a href="/posts/{{$post->id}}/edit"><i class="fa fa-edit"></i></a> 
-                <a href="/posts/{{$post->id}}/edit"><i class="fa fa-trash"></i></a>
-                        {{-- {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-danger">Edit</a>
+                        {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                             {{Form::hidden('_method', 'DELETE')}}
                             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                        {!!Form::close()!!} --}}
+                        {!!Form::close()!!}
                     </td>
             </tr>
-             @endforeach 
-                           
+             @endforeach     
             </tbody>
           </table>
           {{$posts->links()}} 

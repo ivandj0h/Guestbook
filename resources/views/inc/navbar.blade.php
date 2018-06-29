@@ -8,7 +8,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active"><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="/posts">List</a></li>
+        <li class="nav-item"><a class="nav-link" href="/posts">GuestBook List</a></li>
       </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
