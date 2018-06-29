@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        $title = 'Welcome To GuestBook!';
+        $title = 'GuestBook!';
         //return 'pages.index';
         return view('pages.index')->with('title', $title);
     }
 
     public function about(){
-        $title = 'About Us';
+        $title = 'About Page';
         return view('pages.about')->with('title', $title);
     }
 
