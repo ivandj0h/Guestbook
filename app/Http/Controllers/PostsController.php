@@ -41,10 +41,36 @@ class PostsController extends Controller
             'name' => 'required',
             'email' => 'required',
             'content' => 'required',
-            // 'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999'
         ]);
 
-        return 999;
+        // Handle File Upload
+        if($request->hasFile('cover_image')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        // Create Post
+        $post = new Post;
+        $post->name = $request->input('name');
+        $post->email = $request->input('email');
+        $post->content = $request->input('content');
+        $post->user_id = auth()->user()->id;
+        $post->cover_image = $fileNameToStore;
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Created');
+        
     }
 
     /**
