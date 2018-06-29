@@ -20,8 +20,8 @@
               <tr class="table-light">
                 <th scope="row">{{$post->name}}</th>
                 <td>{{$post->email}}</td>
-                <td>{{$post->content}}</td>
-                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-danger">Edit</a>
+                <td>{!!$post->content!!}</td>
+                <td><a href="/posts/{{$post->id}}/edit" class="btn btn-secondary">Edit</a>
                         {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                             {{Form::hidden('_method', 'DELETE')}}
                             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}

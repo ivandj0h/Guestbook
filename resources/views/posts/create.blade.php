@@ -8,13 +8,11 @@
         </div>
         <div class="form-group">
                 {{Form::email('email', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Enter Your Email here'])}}
-            </div>
+        </div>
         <div class="form-group">
             {{Form::textarea('content', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Enter Your Content here'])}}
         </div>
-        <div class="form-group">
-            {{Form::file('cover_image')}}
-        </div>
         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+        <a href="/posts/" class="btn btn-secondary">Back</a>
     {!! Form::close() !!}
 @endsection

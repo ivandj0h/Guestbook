@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(1);
+        $posts = Post::orderBy('id', 'desc')->paginate(2);
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -40,33 +40,15 @@ class PostsController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'content' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'content' => 'required'
         ]);
-
-        // Handle File Upload
-        if($request->hasFile('cover_image')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
 
         // Create Post
         $post = new Post;
         $post->name = $request->input('name');
         $post->email = $request->input('email');
         $post->content = $request->input('content');
-        $post->user_id = auth()->user()->id;
-        $post->cover_image = $fileNameToStore;
+        //$post->user_id = auth()->user()->id;
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -92,7 +74,14 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        // Check for correct user
+        // if(auth()->user()->id !==$post->user_id){
+        //     return redirect('/posts')->with('error', 'Unauthorized Page');
+        // }
+
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -104,7 +93,20 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'content' => 'required'
+        ]);
+
+        // Create Post
+        $post = Post::find($id);
+        $post->name = $request->input('name');
+        $post->email = $request->input('email');
+        $post->content = $request->input('content');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Post Updated');
     }
 
     /**
