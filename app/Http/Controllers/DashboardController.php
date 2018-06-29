@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class DashboardController extends Controller
 {
@@ -23,6 +24,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $posts = Post::orderBy('id', 'desc')->paginate(2);
+        //return view('posts.index')->with('posts', $posts);
+        return view('dashboard')->with('posts', $posts);
     }
 }
