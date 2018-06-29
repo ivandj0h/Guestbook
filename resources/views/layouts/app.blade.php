@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'GuestBook') }}</title>
-
+    <link rel="shortcut icon" href="g_.png" type="image/x-icon" />
     <!-- Styles -->
     <link href="https://bootswatch.com/4/cerulean/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -18,7 +18,7 @@
     <div id="app">
         @include('inc.navbar')
         <div class="container">
-            {{-- @include('inc.messages') --}}
+            @include('inc.messages')
             @yield('content')
         </div>
     </div>

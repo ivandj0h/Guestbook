@@ -37,7 +37,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'content' => 'required',
+            // 'cover_image' => 'image|nullable|max:1999'
+        ]);
+
+        return 999;
     }
 
     /**
