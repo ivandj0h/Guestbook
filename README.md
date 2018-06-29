@@ -1,7 +1,7 @@
-GuestBook
+#GuestBook
 This is a Simple Guest book using laravel 5.x
 
-Requirements
+###Requirements
 PHP >= 7.1.3
 OpenSSL PHP Extension
 PDO PHP Extension
@@ -13,7 +13,7 @@ JSON PHP Extension
 IIS/Apache/Nginx
 MySQL/MariaDB
 
-Install & Run
+###Install & Run
 Import database.sql.txt
 Configure database connection in db_config.php
 Save your password hash in config.php (alg. SHA-256)
